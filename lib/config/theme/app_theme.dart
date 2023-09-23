@@ -7,8 +7,8 @@ class AppTheme {
           background: darkBg,
           primary: darkPrimary,
           secondary: darkSecondary,
-          onPrimary: acent1,
-          onSecondary: acent2,
+          onPrimary: darkAcent1,
+          onSecondary: darkAcent2,
         ),
         useMaterial3: true,
         scaffoldBackgroundColor: darkBg,
@@ -24,8 +24,8 @@ class AppTheme {
           onSecondary: acent2,
         ),
         useMaterial3: true,
-        scaffoldBackgroundColor: darkBg,
-        brightness: Brightness.dark,
+        scaffoldBackgroundColor: bg,
+        brightness: Brightness.light,
         fontFamily: AutofillHints.countryName,
       );
 }

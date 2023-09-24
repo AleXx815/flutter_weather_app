@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:flutter_weather_app/config/router/app_router.dart';
 import 'package:flutter_weather_app/config/theme/app_theme.dart';
 
 void main() {
@@ -21,14 +23,10 @@ class MainApp extends StatelessWidget {
 
     final ThemeData darkTheme = AppTheme.getDarkTheme();
 
-    return MaterialApp(
+    return MaterialApp.router(
+      routerConfig: appRouter,
       debugShowCheckedModeBanner: false,
       theme: isDarkMode ? darkTheme : lightTheme,
-      home: const Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
     );
   }
 }

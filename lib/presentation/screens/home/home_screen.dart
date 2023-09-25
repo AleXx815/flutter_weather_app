@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_weather_app/config/constants/environment.dart';
+// import 'package:flutter_weather_app/config/constants/environment.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = "home-screen";
@@ -13,9 +13,6 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Image.asset("assets/images/1.png"),
-          Center(
-            child: Text(Environmet.openWeatherMapKey),
-          ),
         ],
       ),
     );

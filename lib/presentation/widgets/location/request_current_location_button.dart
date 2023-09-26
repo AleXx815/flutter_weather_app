@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_weather_app/data/data.dart';
 
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -29,6 +30,10 @@ class RequestCurrentLocationButton extends StatelessWidget {
       Position position = await currentLocation(context);
       final double currentLat = position.latitude;
       final double currentLon = position.longitude;
+
+      final locationData = LocationData();
+      locationData.currentLat = currentLat;
+      locationData.currentLon = currentLon;
     } catch (e) {
       if (e is LocationPermissionDeniedError) {
         return null;
@@ -48,6 +53,7 @@ class RequestCurrentLocationButton extends StatelessWidget {
             openAppSettings();
           },
         ),
+        duration: const Duration(seconds: 2),
       ),
     );
   }

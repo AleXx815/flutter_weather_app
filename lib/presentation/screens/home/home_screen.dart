@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:geolocator/geolocator.dart';
+import 'package:flutter_weather_app/presentation/widgets/widgets.dart';
 
 // import 'package:flutter_weather_app/config/constants/environment.dart';
 
@@ -29,49 +28,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          FilledButton(
-            onPressed: () {
-              getCurrentLocation();
-            },
-            child: const Text("Allow Location"),
-          ),
+          const RequestCurrentLocationButton(),
         ],
       ),
     );
-  }
-}
-
-class LocationPermissionDeniedException implements Exception {
-  final String message;
-
-  LocationPermissionDeniedException(
-    this.message,
-  );
-}
-
-Future<Position> currentLocation() async {
-  LocationPermission permission;
-  permission = await Geolocator.checkPermission();
-
-  if (permission == LocationPermission.denied) {
-    permission = await Geolocator.requestPermission();
-    if (permission == LocationPermission.denied) {
-      throw LocationPermissionDeniedException(
-          "El usuario denegó el permiso de ubicación.");
-    }
-  }
-  return await Geolocator.getCurrentPosition();
-}
-
-void getCurrentLocation() async {
-  try {
-    Position position = await currentLocation();
-    print("La latitud es: ${position.latitude}");
-    print("La longitud es: ${position.longitude}");
-  } catch (e) {
-    if (e is LocationPermissionDeniedException) {
-      // Aquí puedes mostrar un mensaje al usuario o realizar otras acciones.
-      print(e.message);
-    }
   }
 }

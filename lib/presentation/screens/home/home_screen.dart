@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_weather_app/presentation/widgets/widgets.dart';
 
-// import 'package:flutter_weather_app/config/constants/environment.dart';
-
 class HomeScreen extends StatelessWidget {
   static const name = "home-screen";
 

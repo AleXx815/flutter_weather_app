@@ -4,8 +4,10 @@ import 'package:flutter_weather_app/config/constants/environment.dart';
 import 'package:flutter_weather_app/data/data.dart';
 import 'package:flutter_weather_app/domain/datasources/weather_datasource.dart';
 import 'package:flutter_weather_app/domain/entities/weather_entity.dart';
+import 'package:flutter_weather_app/infrastructure/mappers/weather_mapper.dart';
+import 'package:flutter_weather_app/infrastructure/models/openWeatherMap/open_weather_map_response.dart';
 
-class OpenWeatherMapDatasource extends WeatherDatasource {
+class OpenWeatherMapDatasource extends MainWeatherDatasource {
   final dio = Dio(
     BaseOptions(
       baseUrl: "https://api.openweathermap.org/data/2.5/weather?",
@@ -16,14 +18,21 @@ class OpenWeatherMapDatasource extends WeatherDatasource {
   );
 
   @override
-  Future<List<WeatherEntity>> getCurrentWeatherData({int page = 1}) async {
+  Future<MainWeather> getMainWeather({int page = 1}) async {
     final locationData = LocationData();
     final currentLat = locationData.currentLat;
     final currentLon = locationData.currentLon;
 
-    final response = await dio.get("lat=$currentLat&lon=$currentLon");
-    final List<WeatherEntity> weather = [];
+    final response = await dio.get("lat=$currentLat&lon=$currentLon&");
 
-    return weather;
+    final openWeatherMapResponse =
+        OpenWeatherMapResponse.fromJson(response.data);
+
+    final mainData = openWeatherMapResponse.main;
+
+    MainWeather mainWeather =
+        MainWeatherMapper.openWeatherMapMainWeatherToEntity(mainData);
+
+    return mainWeather;
   }
 }

@@ -1,15 +1,15 @@
-import 'package:flutter_weather_app/infrastructure/models/openWeatherMap/weather_open_weather_map.dart';
+import 'package:flutter_weather_app/infrastructure/models/openWeatherMap/reponse_classes_open_weather_map.dart';
 
 class OpenWeatherMapResponse {
-  final WeatherCoordOpenWeatherMap coord;
-  final List<WeatherWeatherOpenWeatherMap> weather;
+  final CoordOpenWeatherMap coord;
+  final List<WeatherOpenWeatherMap> weather;
   final String base;
-  final WeatherMainOpenWeatherMap main;
+  final MainFromOpenWeatherMap main;
   final int visibility;
-  final WeatherWindOpenWeatherMap wind;
-  final WeatherCloudsOpenWeatherMap? clouds;
+  final WindOpenWeatherMap wind;
+  final CloudsOpenWeatherMap? clouds;
   final int dt;
-  final WeatherSysOpenWeatherMap sys;
+  final SysOpenWeatherMap sys;
   final int timezone;
   final int id;
   final String name;
@@ -33,18 +33,18 @@ class OpenWeatherMapResponse {
 
   factory OpenWeatherMapResponse.fromJson(Map<String, dynamic> json) =>
       OpenWeatherMapResponse(
-        coord: WeatherCoordOpenWeatherMap.fromJson(json["coord"]),
-        weather: List<WeatherWeatherOpenWeatherMap>.from(json["weather"]
-            .map((x) => WeatherWeatherOpenWeatherMap.fromJson(x))),
+        coord: CoordOpenWeatherMap.fromJson(json["coord"]),
+        weather: List<WeatherOpenWeatherMap>.from(
+            json["weather"].map((x) => WeatherOpenWeatherMap.fromJson(x))),
         base: json["base"],
-        main: WeatherMainOpenWeatherMap.fromJson(json["main"]),
+        main: MainFromOpenWeatherMap.fromJson(json["main"]),
         visibility: json["visibility"],
-        wind: WeatherWindOpenWeatherMap.fromJson(json["wind"]),
+        wind: WindOpenWeatherMap.fromJson(json["wind"]),
         clouds: json["clouds"]
-            ? WeatherCloudsOpenWeatherMap.fromJson(json["clouds"])
+            ? CloudsOpenWeatherMap.fromJson(json["clouds"])
             : null,
         dt: json["dt"],
-        sys: WeatherSysOpenWeatherMap.fromJson(json["sys"]),
+        sys: SysOpenWeatherMap.fromJson(json["sys"]),
         timezone: json["timezone"],
         id: json["id"],
         name: json["name"],

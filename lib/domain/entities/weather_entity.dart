@@ -2,7 +2,7 @@ class WeatherEntity {
   final Coordinates coordinates;
   final List<WeatherDescription> weather;
   final String base;
-  final MainWeatherData main;
+  final MainWeather main;
   final int visibility;
   final Wind wind;
   final int dt;
@@ -52,7 +52,7 @@ class WeatherDescription {
   });
 }
 
-class MainWeatherData {
+class MainWeather {
   final double temp;
   final double feelsLike;
   final double tempMin;
@@ -60,7 +60,7 @@ class MainWeatherData {
   final int pressure;
   final int humidity;
 
-  MainWeatherData({
+  MainWeather({
     required this.temp,
     required this.feelsLike,
     required this.tempMin,

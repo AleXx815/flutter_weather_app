@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 
 import 'package:flutter_weather_app/config/constants/environment.dart';
 import 'package:flutter_weather_app/data/data.dart';
-import 'package:flutter_weather_app/domain/datasources/weather_datasource.dart';
+import 'package:flutter_weather_app/domain/datasources/weather_datasources.dart';
 import 'package:flutter_weather_app/domain/entities/weather_entity.dart';
 import 'package:flutter_weather_app/infrastructure/mappers/weather_mapper.dart';
 import 'package:flutter_weather_app/infrastructure/models/openWeatherMap/open_weather_map_response.dart';

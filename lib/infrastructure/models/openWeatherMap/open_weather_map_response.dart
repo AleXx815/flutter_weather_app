@@ -7,7 +7,6 @@ class OpenWeatherMapResponse {
   final MainFromOpenWeatherMap main;
   final int visibility;
   final WindOpenWeatherMap wind;
-  final CloudsOpenWeatherMap? clouds;
   final int dt;
   final SysOpenWeatherMap sys;
   final int timezone;
@@ -22,7 +21,6 @@ class OpenWeatherMapResponse {
     required this.main,
     required this.visibility,
     required this.wind,
-    required this.clouds,
     required this.dt,
     required this.sys,
     required this.timezone,
@@ -40,9 +38,6 @@ class OpenWeatherMapResponse {
         main: MainFromOpenWeatherMap.fromJson(json["main"]),
         visibility: json["visibility"],
         wind: WindOpenWeatherMap.fromJson(json["wind"]),
-        clouds: json["clouds"]
-            ? CloudsOpenWeatherMap.fromJson(json["clouds"])
-            : null,
         dt: json["dt"],
         sys: SysOpenWeatherMap.fromJson(json["sys"]),
         timezone: json["timezone"],
@@ -58,7 +53,6 @@ class OpenWeatherMapResponse {
         "main": main.toJson(),
         "visibility": visibility,
         "wind": wind.toJson(),
-        "clouds": clouds == null ? null : clouds!.toJson(),
         "dt": dt,
         "sys": sys.toJson(),
         "timezone": timezone,
